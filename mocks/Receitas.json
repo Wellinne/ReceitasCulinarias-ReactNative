@@ -1,0 +1,177 @@
+[
+  {
+    "id": 1,
+    "nome": "Bolo de cenoura",
+    "imagem": "https://static.itdg.com.br/images/640-400/d290bc79bcad112ee9095604e45eb262/365326-original.jpg",
+    "ingredientes": [
+      "3 cenouras médias",
+      "4 ovos",
+      "1 xícara de óleo",
+      "2 xícaras de açúcar",
+      "2 xícaras de farinha de trigo",
+      "1 colher de fermento em pó"
+    ],
+    "modoDePreparo": [
+      "Em um liquidificador, adicione as cenouras, os ovos e o óleo, depois misture.",
+      "Acrescente o açúcar e bata por 5 minutos.",
+      "Em uma tigela ou na batedeira, adicione a farinha de trigo e depois misture novamente.",
+      "Acrescente o fermento e misture lentamente com uma colher.",
+      "Asse em um forno preaquecido a 180° C por aproximadamente 40 minutos."
+    ],
+    "tempoDePreparo": "60 minutos",
+    "rendimento": "12 porções",
+    "categoria": "Bolos"
+  },
+  {
+    "id": 2,
+    "nome": "Pudim de leite",
+    "imagem": "https://static.itdg.com.br/images/640-400/d1307a2e17cda187df76b78cfd3ac464/shutterstock-2322251819-1-.jpg",
+    "ingredientes": [
+      "1 lata de leite condensado",
+      "A mesma medida de leite de vaca",
+      "3 ovos",
+      "1 xícara de açúcar para a calda"
+    ],
+    "modoDePreparo": [
+      "Primeiramente, bata bem os ovos no liquidificador.",
+      "Acrescente o leite condensado e o leite, e bata novamente.",
+      "Calda: derreta o açúcar até ficar moreno e acrescente meia xícara de água quente.",
+      "Coloque a calda em uma forma e depois despeje a mistura do liquidificador.",
+      "Asse em forno médio por 45 minutos, em banho-maria."
+    ],
+    "tempoDePreparo": "60 minutos",
+    "rendimento": "12 porções",
+    "categoria": "Sobremesas"
+  },
+  {
+    "id": 3,
+    "nome": "Bolo de fubá",
+    "imagem": "https://static.itdg.com.br/images/640-400/b8929bcb43d73968a7a82f180b48d298/10495-original.jpg",
+    "ingredientes": [
+      "3 ovos",
+      "1 xícara de leite",
+      "1 xícara de óleo",
+      "2 xícaras de açúcar",
+      "1 xícara de fubá",
+      "1 xícara de farinha de trigo",
+      "1 colher de fermento em pó"
+    ],
+    "modoDePreparo": [
+      "Coloque no liquidificador os ovos, o leite, o óleo e o açúcar, e bata bem.",
+      "Acrescente o fubá e a farinha e bata novamente.",
+      "Por último, acrescente o fermento e bata rapidamente.",
+      "Asse em forno preaquecido a 180° C por aproximadamente 40 minutos."
+    ],
+    "tempoDePreparo": "60 minutos",
+    "rendimento": "12 porções",
+    "categoria": "Bolos"
+  },
+  {
+    "id": 4,
+    "nome": "Brigadeiro",
+    "imagem": "https://static.itdg.com.br/images/640-400/a373f494abb2c3360b9966f5abe130e2/brigadeiro-.jpg",
+    "ingredientes": [
+      "1 lata de leite condensado",
+      "1 colher de sopa de manteiga",
+      "7 colheres de sopa de achocolatado em pó",
+      "chocolate granulado"
+    ],
+    "modoDePreparo": [
+      "Em uma panela, misture o leite condensado, a manteiga e o achocolatado.",
+      "Cozinhe em fogo médio e mexa até que o brigadeiro comece a desgrudar do fundo da panela.",
+      "Deixe esfriar e faça bolinhas.",
+      "Passe as bolinhas no chocolate granulado e coloque em forminhas de papel."
+    ],
+    "tempoDePreparo": "30 minutos",
+    "rendimento": "30 porções",
+    "categoria": "Sobremesas"
+  },
+  {
+    "id": 5,
+    "nome": "Pão de queijo",
+    "imagem": "https://static.itdg.com.br/images/640-400/ce464b65fe55ff7f03a68d7b1d6850c6/318013-original.jpg",
+    "ingredientes": [
+      "1 xícara de leite",
+      "1/2 xícara de óleo",
+      "3 xícaras de polvilho doce",
+      "3 ovos",
+      "1 xícara de queijo ralado",
+      "sal a gosto"
+    ],
+    "modoDePreparo": [
+      "Em uma panela, ferva o leite com o óleo.",
+      "Em uma tigela, coloque o polvilho e escalde com a mistura fervente.",
+      "Adicione os ovos, o queijo e o sal, e misture bem.",
+      "Asse em forno preaquecido a 180° C por aproximadamente 30 minutos."
+    ],
+    "tempoDePreparo": "45 minutos",
+    "rendimento": "30 porções",
+    "categoria": "Salgados"
+  },
+  {
+    "id": 6,
+    "nome": "Bolo de chocolate",
+    "imagem": "https://static.itdg.com.br/images/640-400/8996d19655356428123f8eb3cee6cb19/318700-original.jpg",
+    "ingredientes": [
+      "3 ovos",
+      "2 xícaras de açúcar",
+      "3 xícaras de farinha de trigo",
+      "1 xícara de óleo",
+      "1 xícara de chocolate em pó",
+      "1 xícara de água quente",
+      "1 colher de fermento em pó"
+    ],
+    "modoDePreparo": [
+      "Em uma tigela, misture o açúcar, a farinha e o chocolate.",
+      "Adicione os ovos, o óleo e a água quente, e misture bem.",
+      "Por último, adicione o fermento e misture lentamente.",
+      "Asse em forno preaquecido a 180° C por aproximadamente 40 minutos."
+    ],
+    "tempoDePreparo": "60 minutos",
+    "rendimento": "12 porções",
+    "categoria": "Bolos"
+  },
+  {
+    "id": 7,
+    "nome": "Bolo de laranja",
+    "imagem": "https://static.itdg.com.br/images/640-400/212dd700fb31e123f3287a57c2e1041b/161733-original.jpg",
+    "ingredientes": [
+      "3 ovos",
+      "1 xícara de suco de laranja",
+      "1 xícara de óleo",
+      "2 xícaras de açúcar",
+      "3 xícaras de farinha de trigo",
+      "1 colher de fermento em pó"
+    ],
+    "modoDePreparo": [
+      "Em uma tigela, misture o açúcar, a farinha e o fermento.",
+      "Adicione os ovos, o suco de laranja e o óleo, e misture bem.",
+      "Asse em forno preaquecido a 180° C por aproximadamente 40 minutos."
+    ],
+    "tempoDePreparo": "60 minutos",
+    "rendimento": "12 porções",
+    "categoria": "Bolos"
+  },
+  {
+    "id": 8,
+    "nome": "Bolo de milho",
+    "imagem": "https://static.itdg.com.br/images/640-400/217c7b9a48205fa70d43fa6589b11ae2/183525-original.jpg",
+    "ingredientes": [
+      "1 lata de milho verde",
+      "1 lata de leite",
+      "1 lata de óleo",
+      "1 lata de açúcar",
+      "1 lata de fubá",
+      "4 ovos",
+      "1 colher de fermento em pó"
+    ],
+    "modoDePreparo": [
+      "Bata todos os ingredientes no liquidificador, exceto o fermento.",
+      "Acrescente o fermento e misture lentamente.",
+      "Asse em forno preaquecido a 180° C por aproximadamente 40 minutos."
+    ],
+    "tempoDePreparo": "60 minutos",
+    "rendimento": "12 porções",
+    "categoria": "Bolos"
+  }
+]
