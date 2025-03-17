@@ -1,52 +1,89 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Button, Swiper } from '../../components';
+import { Button, InputSelect, Menu, Swiper } from '../../components';
 import { Categoria, Container, Descricao, SubTitulos, Titulo } from './style';
 import { colors } from '../../themes/colors';
 import Receitas from '../../mocks/Receitas.json';
 import { ScrollView } from 'react-native-gesture-handler';
+import axios from 'axios';
+
+type Receita = {
+  id: number;
+  nome: string;
+  receita: string;
+  ingredientes: string;
+  modo_preparo: string;
+  link_imagem: string;
+  tipo: string;
+  created_at: string;
+  IngredientesBase: any[];
+};
 
 const Home: React.FC = () => {
   const [receitaSelecionada, setReceitaSelecionada] = useState<number>(1);
-  const navigator = useNavigation();
+  const [receitas, setReceitas] = useState<Receita[]>([]);
+  const [categoria, setCategoria] = useState<string>('todas');	
+
+  const formatarModoPreparo = (modoPreparo: string) => {
+    return modoPreparo.replace(/(\d+\.)/g, (match, p1, offset) =>
+      offset === 0 ? p1 : `\n${p1}`
+    );
+  };
+
+  const todasReceitas = async () => {
+    await axios.get('https://api-receitas-pi.vercel.app/receitas/todas')
+      .then((response) => {
+        setReceitas(response.data);
+      }
+    );
+  };
+
+  const tipoReceitas = async () => {
+    await axios.get(`https://api-receitas-pi.vercel.app/receitas/tipo/${categoria}`)
+      .then((response) => {
+        setReceitas(response.data);
+        setReceitaSelecionada(response.data[0].id);
+      }
+    );
+  };
+
+  useEffect(() => {
+    todasReceitas();
+  }, [todasReceitas.length, categoria === 'todas']);
+
+  useEffect(() => {
+    if(categoria !== 'todas') {
+    tipoReceitas();
+    }
+  }, [categoria]);
 
   return (
+    <Menu>
     <ScrollView>
       <Container>
-        <Swiper data={Receitas} onChange={setReceitaSelecionada}/>
-        {Receitas.map((receita, index) => (
+        <InputSelect
+          placeholder='Filtrar por categoria'
+          options={['todas', 'salgado', 'doce']}
+          onSelect={(categoria) => {
+            setCategoria(categoria);
+          }}
+        />
+        <Swiper data={receitas} onChange={setReceitaSelecionada}/>
+        {receitas?.map((receita, index) => (
           receitaSelecionada === receita?.id &&
-              <View key={Number(index)}>
-                <Titulo>{receita.nome}</Titulo>
-                <Categoria>{receita.categoria}</Categoria>
-                <SubTitulos>Ingredientes</SubTitulos>
-                {receita.ingredientes.map(((item, indexIngredientes) =>
-                  <Descricao key={Number(indexIngredientes)}>{item}</Descricao>)
-                )}
-                <SubTitulos>Modo de preparo</SubTitulos>
-                <Descricao>{receita.modoDePreparo}</Descricao>
-                <SubTitulos>Tempo de preparo</SubTitulos>
-                <Descricao>{receita.tempoDePreparo}</Descricao>
-                <SubTitulos>Rendimento</SubTitulos>
-                <Descricao>{receita.rendimento}</Descricao>
-              </View>
+          <View key={Number(index)} style={{ padding: 14 }}>
+            <Titulo>{receita.receita}</Titulo>
+            <Categoria>{receita.tipo.toLocaleUpperCase()}</Categoria>
+            <SubTitulos>Ingredientes</SubTitulos>
+            <Descricao>{receita.ingredientes.split(',').map(item => item.trim()).join('\n')}</Descricao>
+            <SubTitulos>Modo de Preparo</SubTitulos>
+            <Descricao>{formatarModoPreparo(receita.modo_preparo)}</Descricao>
+          </View>
         ))}
-        
-        <View style={{ width: '50%', marginBottom: '5%' }}>
-          <Button
-            backgroundColor={colors.roxo}
-            label="Sair"
-            textColor={colors.white}
-            height="50px"
-            bold
-            centered
-            variant="outlined"
-            onClick={() => navigator.navigate('Login' as never)}
-          />
-        </View>
       </Container>
     </ScrollView>
+    </Menu>
   );
 };
 

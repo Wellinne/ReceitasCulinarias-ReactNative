@@ -2,8 +2,8 @@
 import styled from 'styled-components/native';
 import { colors } from '../../themes/colors';
 
-type ContainerProps = {
-  url: string;
+type StyledProps = {
+  select?: string;
 };
 
 export const SwiperStyled = styled.View`
@@ -12,10 +12,10 @@ export const SwiperStyled = styled.View`
   gap: 8px;
 `;
 
-export const Container = styled.View`
+export const Container = styled.View<StyledProps>`
   width: 90px;
   height: 90px;
-  border: 2px solid ${colors.roxo};
+  border: ${({ select }: StyledProps) => select};
   border-radius: 50%;
   padding: 0;
   margin: 8px;

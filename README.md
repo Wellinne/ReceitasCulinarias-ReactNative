@@ -6,6 +6,10 @@ Um aplicativo de receitas culinárias desenvolvido em **React Native**, com func
 - **React Native**
 - **Expo**
 - **Styled Components**
+- **Axios**
+
+## API utilizada para listar as receitas
+   https://github.com/DenilsonRabelo/API-Receitas
 
 ## 📦 Instalação e Execução
 

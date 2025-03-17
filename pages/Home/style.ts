@@ -16,6 +16,7 @@ export const Titulo = styled.Text`
   color: ${colors.roxo};
   font-weight: bold;
   align-self: center;
+  text-align: center;
 `;
 
 export const Categoria = styled.Text`
