@@ -6,9 +6,10 @@ import { useNavigation } from '@react-navigation/native';
 
 type MenuProps = {
   children: React.ReactNode;
+  title?: string;
 };
 
-const Menu = ({ children }: MenuProps) => {
+const Menu = ({ children, title }: MenuProps) => {
   const slideAnim = useRef(new Animated.Value(-300)).current;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigator = useNavigation();
@@ -32,7 +33,7 @@ const Menu = ({ children }: MenuProps) => {
     <Container>
       <MenuButton onPress={() => toggleMenu()}>
         <MenuButtonText>☰</MenuButtonText>
-        <MenuButtonText>Home</MenuButtonText>
+        <MenuButtonText>{title}</MenuButtonText>
       </MenuButton>
 
       <Content>{children}</Content>
@@ -47,6 +48,9 @@ const Menu = ({ children }: MenuProps) => {
       >
         <MenuItem onPress={() => toggleMenu('Home')}>
           <MenuText>Home</MenuText>
+        </MenuItem>
+        <MenuItem onPress={() => toggleMenu('Perfil')}>
+          <MenuText>Perfil</MenuText>
         </MenuItem>
         <MenuItem onPress={() => toggleMenu('Login')}>
           <MenuText>Sair</MenuText>

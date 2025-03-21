@@ -25,7 +25,7 @@ export const MenuButton = styled.TouchableOpacity`
 
 export const MenuButtonText = styled.Text`
   font-size: 24px;
-  color: ${colors.roxo};
+  color: ${colors.orange};
   font-weight: bold;
 `;
 
@@ -39,6 +39,6 @@ export const MenuItem = styled.TouchableOpacity`
 `;
 
 export const MenuText = styled.Text`
-  color: ${colors.lilas};
+  color: ${colors.lightOrange};
   font-size: 18px;
 `;

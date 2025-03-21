@@ -13,7 +13,7 @@ export const Container = styled.View`
 
 export const Titulo = styled.Text`
   font-size: 30px;
-  color: ${colors.roxo};
+  color: ${colors.orange};
   font-weight: bold;
   align-self: center;
   text-align: center;
@@ -21,13 +21,13 @@ export const Titulo = styled.Text`
 
 export const Categoria = styled.Text`
   font-size: 16px;
-  color: ${colors.lilas};
+  color: ${colors.lightOrange};
   align-self: center;
 `;
 
 export const SubTitulos = styled.Text`
   font-size: 20px;
-  color: ${colors.roxo};
+  color: ${colors.orange};
   font-weight: bold;
   margin-bottom: 10px;
 `;

@@ -6,8 +6,9 @@ import { Container, PasswordText, Titulo } from './style';
 import { caracterCustomizado } from '../../utils/inputMasks';
 import { colors } from '../../themes/colors';
 import { ScrollView } from 'react-native-gesture-handler';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-interface User {
+export interface User {
   name: string
   email: string
   password: string
@@ -45,32 +46,32 @@ const Cadastro: React.FC = () => {
     return true;
   };
 
-  const [firstColor, setFirstColor] = useState<string>('gray');
-  const [scndColor, setScndColor] = useState<string>('gray');
-  const [thrdColor, setThrdColor] = useState<string>('gray');
-  const [fourthColor, setFourthColor] = useState<string>('gray');
-  const [fifthColor, setFifthColor] = useState<string>('gray');
+  const [verificacaoSenha, setVerificacaoSenha] = useState({
+    maxCaracter: colors.cinzaEscuro,
+    maiuscula: colors.cinzaEscuro,
+    minuscula: colors.cinzaEscuro,
+    numero: colors.cinzaEscuro,
+    caractereEspecial: colors.cinzaEscuro,
+  });
+
+  const validarSenha = (senha: string) => {
+    const regexMinuscula = /(?=.*[a-z])/;
+    const regexMaiuscula = /(?=.*[A-Z])/;
+    const regexNumero = /(?=.*[0-9])/;
+    const regexCaractereEspecial = /(?=.*[$*&@#?!+%.])/;
+
+    setVerificacaoSenha((prevState) => ({
+      ...prevState,
+      minuscula: senha?.length > 0 && regexMinuscula.test(senha) ? colors.green : colors.cinzaEscuro,
+      maiuscula: senha?.length > 0 && regexMaiuscula.test(senha) ? colors.green : colors.cinzaEscuro,
+      numero: senha?.length > 0 && regexNumero.test(senha) ? colors.green : colors.cinzaEscuro,
+      caractereEspecial: senha?.length > 0 && regexCaractereEspecial.test(senha) ? colors.green : colors.cinzaEscuro,
+      maxCaracter: senha?.length >= 8 ? colors.green : colors.cinzaEscuro,
+    }));
+  };
 
   useEffect(() => {
-    if (/(?=.*[a-z])[a-z]/.test(userData.password) && userData?.password?.length > 0) {
-      setFirstColor(colors.green);
-    }
-
-    if (/(?=.*[A-Z])[A-Z]/.test(userData.password)) {
-      setScndColor(colors.green);
-    }
-
-    if (/(?=.*[0-9])[0-9]/.test(userData.password)) {
-      setThrdColor(colors.green);
-    }
-
-    if (/(?=.*[$*&@#?!+%.])[$*&@#?!+%.]/.test(userData.password)) {
-      setFourthColor(colors.green);
-    }
-
-    if (userData?.password?.length >= 8) {
-      setFifthColor(colors.green);
-    }
+    validarSenha(userData.password);
   }, [userData.password]);
 
   return (
@@ -117,27 +118,27 @@ const Cadastro: React.FC = () => {
         />
 
         <PasswordText>
-          A senha deve possuir:
-          {' '}
-          {'\n'}
-          <PasswordText style={{ color: fifthColor }}>8 caractéres</PasswordText>
-          {' '}
-          {'\n'}
-          <PasswordText style={{ color: firstColor }}>Uma letra minúscula</PasswordText>
-          {' '}
-          {'\n'}
-          <PasswordText style={{ color: scndColor }}>Uma letra maiúscula</PasswordText>
-          {' '}
-          {'\n'}
-          <PasswordText style={{ color: thrdColor }}>Um número</PasswordText>
-          {' '}
-          {'\n'}
-          <PasswordText style={{ color: fourthColor }}>Um caractér especial</PasswordText>
+            A senha deve possuir:
+            {' '}
+            {'\n'}
+            <PasswordText color={verificacaoSenha.maxCaracter}>8 caractéres</PasswordText>
+            {' '}
+            {'\n'}
+            <PasswordText color={verificacaoSenha.minuscula}>Uma letra minúscula</PasswordText>
+            {' '}
+            {'\n'}
+            <PasswordText color={verificacaoSenha.maiuscula}>Uma letra maiúscula</PasswordText>
+            {' '}
+            {'\n'}
+            <PasswordText color={verificacaoSenha.numero}>Um número</PasswordText>
+            {' '}
+            {'\n'}
+          <PasswordText color={verificacaoSenha.caractereEspecial}>Um caractér especial</PasswordText>
         </PasswordText>
 
         <View style={{ width: '100%', marginTop: '10%' }}>
           <Button
-            backgroundColor={colors.roxo}
+            backgroundColor={colors.orange}
             height="50px"
             textColor="white"
             centered
@@ -146,7 +147,19 @@ const Cadastro: React.FC = () => {
             onClick={async () => {
               const approved = checkFields();
               if (approved) {
-                navigator.navigate('Login' as never)                 
+                try {
+                  const usersString = await AsyncStorage.getItem('cadastro');
+                  const usersArray = usersString ? JSON.parse(usersString) : [];
+                  
+                  usersArray.push(userData);
+                  await AsyncStorage.setItem('cadastro', JSON.stringify(usersArray));
+
+                  console.log('Usuário cadastrado com sucesso:', userData);
+
+                  navigator.navigate('Login' as never);
+                } catch (e) {
+                  console.error('Erro ao salvar dados no AsyncStorage:', e);
+                }       
               }
             }}
           />
@@ -155,12 +168,12 @@ const Cadastro: React.FC = () => {
           <Button
             backgroundColor="none"
             label="Voltar"
-            textColor={colors.roxo}
+            textColor={colors.orange}
             height="50px"
             bold
             centered
             variant="outlined"
-            borderColor={colors.roxo}
+            borderColor={colors.orange}
             onClick={() => navigator.navigate('Login' as never)}
           />
         </View>

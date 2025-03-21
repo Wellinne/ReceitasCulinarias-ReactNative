@@ -13,14 +13,14 @@ export const Container = styled.View`
 export const DropdownButton = styled.TouchableOpacity`
   padding: 15px;
   border-width: 1px;
-  border-color: ${colors.lilas};
+  border-color: ${colors.lightOrange};
   border-radius: 5px;
-  background-color: ${colors.roxo};
+  background-color: ${colors.orange};
 `;
 
 export const ButtonText = styled.Text`
   font-size: 16px;
-  color: ${colors.lilas};
+  color: ${colors.lightOrange};
 `;
 
 export const ModalOverlay = styled.View`
@@ -44,5 +44,5 @@ export const OptionItem = styled.TouchableOpacity`
 `;
 
 export const TextOptionItem = styled.Text`
-  color: ${({ color }: ContainerProps) => color || colors.lilas};
+  color: ${({ color }: ContainerProps) => color || colors.lightOrange};
 `;

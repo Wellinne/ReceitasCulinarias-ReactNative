@@ -5,11 +5,13 @@ import { Button, InputText } from '../../components';
 import { Container, Titulo } from './style';
 import { colors } from '../../themes/colors';
 import { caracterCustomizado } from '../../utils/inputMasks';
+import { useAuth } from '../../contexts/Auth';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigator = useNavigation();
+  const { login } = useAuth();
 
   const handleSubmit = async () => {
     try {
@@ -26,7 +28,7 @@ const Login: React.FC = () => {
         );
         return;
       } else {
-        navigator.navigate('Home' as never)
+        login(email, password);
       }
     } catch (error) {
       Alert.alert(
@@ -60,7 +62,7 @@ const Login: React.FC = () => {
 
       <View style={{ width: '100%', marginBottom: '5%' }}>
         <Button
-          backgroundColor={colors.roxo}
+          backgroundColor={colors.orange}
           label="Entrar"
           textColor={colors.white}
           height="50px"
@@ -74,12 +76,12 @@ const Login: React.FC = () => {
         <Button
           backgroundColor="none"
           label="Cadastre-se"
-          textColor={colors.roxo}
+          textColor={colors.orange}
           height="50px"
           bold
           centered
           variant="outlined"
-          borderColor={colors.roxo}
+          borderColor={colors.orange}
           onClick={() => navigator.navigate('Cadastro' as never)}
         />
       </View>

@@ -1,5 +1,4 @@
-import {  StyleSheet, KeyboardTypeOptions } from 'react-native';
-import { colors } from '../../../themes/colors'
+import { KeyboardTypeOptions } from 'react-native';
 import { Container, ErrorText, Input,Text } from './style';
 
 interface InputProps{
@@ -12,9 +11,10 @@ interface InputProps{
   keyboardType: KeyboardTypeOptions;
   color?: string;
   password?: boolean;
+  desabled?: boolean;
 }
 
-export function InputText({ name, placeholder, value, onChange, onBlur, error, keyboardType, color, password }: InputProps) {
+export function InputText({ name, placeholder, value, onChange, onBlur, error, keyboardType, color, password, desabled }: InputProps) {
  return (
   <Container>
     <Text color={color}>{name}</Text>
@@ -25,6 +25,7 @@ export function InputText({ name, placeholder, value, onChange, onBlur, error, k
       onChangeText={onChange}
       keyboardType={keyboardType}
       secureTextEntry={password}
+      editable={desabled}
     />
     {error && <ErrorText>{error}</ErrorText>}
   </Container>

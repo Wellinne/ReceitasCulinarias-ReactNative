@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { Button, InputSelect, Menu, Swiper } from '../../components';
+import { InputSelect, Menu, Swiper } from '../../components';
 import { Categoria, Container, Descricao, SubTitulos, Titulo } from './style';
-import { colors } from '../../themes/colors';
-import Receitas from '../../mocks/Receitas.json';
 import { ScrollView } from 'react-native-gesture-handler';
 import axios from 'axios';
 
@@ -23,7 +20,7 @@ type Receita = {
 const Home: React.FC = () => {
   const [receitaSelecionada, setReceitaSelecionada] = useState<number>(1);
   const [receitas, setReceitas] = useState<Receita[]>([]);
-  const [categoria, setCategoria] = useState<string>('todas');	
+  const [categoria, setCategoria] = useState<string>('todas');
 
   const formatarModoPreparo = (modoPreparo: string) => {
     return modoPreparo.replace(/(\d+\.)/g, (match, p1, offset) =>
@@ -59,7 +56,7 @@ const Home: React.FC = () => {
   }, [categoria]);
 
   return (
-    <Menu>
+    <Menu title="Home">
     <ScrollView>
       <Container>
         <InputSelect

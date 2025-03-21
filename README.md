@@ -1,12 +1,14 @@
 # 📱 App de Receitas Culinárias
 
-Um aplicativo de receitas culinárias desenvolvido em **React Native**, com funcionalidades de login, cadastro e uma home para exibir receitas.
+Um aplicativo de receitas culinárias desenvolvido em **React Native**, com funcionalidades de login, cadastro, uma home para exibir receitas e o perfil para exibir o usuário logado.
 
 ## 🛠 Tecnologias Utilizadas
 - **React Native**
 - **Expo**
 - **Styled Components**
 - **Axios**
+- **Context API**
+- **AsyncStorage**
 
 ## API utilizada para listar as receitas
    https://github.com/DenilsonRabelo/API-Receitas
